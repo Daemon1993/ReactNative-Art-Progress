@@ -1,0 +1,15 @@
+{
+  "name": "artdemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.android.js",
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "author": "daemon",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-native": "^0.39.2"
+  }
+}

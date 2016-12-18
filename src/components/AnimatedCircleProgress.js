@@ -1,0 +1,98 @@
+/**
+ * 圆形进度条 动画效果类
+ * 内部可以放内容
+ * 个性化通过props配置
+ * Created by Daemon on 2016/12/13 17:55.
+ */
+import React, {Component, PropTypes} from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    Dimensions,
+    Animated
+} from 'react-native';
+
+import CircleProgressView from './CircleProgressView';
+
+const AnimatedCP = Animated.createAnimatedComponent(CircleProgressView);
+
+const Tag = "AnimatedCircleProgress";
+export default class AnimatedCircleProgress extends Component {
+
+    static defaultProps = {
+        durtime: 1000,
+        progress: 0,
+    };
+
+
+
+    static propTypes = {
+
+        progress: PropTypes.number,
+        totalNum: PropTypes.number,
+
+        progressWidth: PropTypes.number,
+        baseProgressWidth: PropTypes.number,
+        raduis: PropTypes.number,
+
+        durtime: PropTypes.number,
+        progressColor:PropTypes.string,
+        progressBaseColor:PropTypes.string,
+        centerViewMode:PropTypes.bool,
+
+    };
+
+
+    // 构造
+    constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {
+            progress1: new Animated.Value(0),
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.progress != this.props.progress) {
+            this.startAnimate(nextProps.progress);
+        }
+    }
+
+    componentDidMount() {
+        console.log(Tag, 'componentDidMount');
+
+        this.startAnimate(this.props.progress)
+    }
+
+    startAnimate(progress) {
+
+        this.state.progress1.setValue(0);
+        Animated.timing(this.state.progress1, {
+            toValue: progress,
+            duration: this.props.durtime
+        }).start();
+
+    }
+
+    shouldComponentUpdate(nextProps,nexStatus) {
+
+        if(nextProps.progress==this.props.progress ){
+            return false;
+        }
+
+        return true;
+    }
+    render() {
+
+        const {durtime, progress, ...other} = this.props;
+
+        return (
+            <AnimatedCP
+                {...other}
+                progress={this.state.progress1}
+            />
+        );
+    }
+
+}
