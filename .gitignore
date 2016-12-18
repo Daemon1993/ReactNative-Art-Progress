@@ -86,3 +86,12 @@ android/captures/
 android/android_iwown_Ble/android_iwown_Ble.iml
 android/app/app.iml
 *.DS_Store
+
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
