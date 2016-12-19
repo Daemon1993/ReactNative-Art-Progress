@@ -8,9 +8,29 @@ CircleProgress  base  on ReactNative ART
 
 > 效果图
 >>![效果图](http://upload-images.jianshu.io/upload_images/831873-35605fb34b5078d3.gif?imageMogr2/auto-orient/strip)
-![内容说明](http://upload-images.jianshu.io/upload_images/831873-024ad0ecc65f3a82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![内容说明](http://upload-images.jianshu.io/upload_images/831873-d7f29f111bc27fc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 >使用方法很简单
+
+````
+               <CircleProgressView progress={this.state.progress}>
+                    <View style={{backgroundColor: '#987123', flex: 1,  alignItems: 'center'}}>
+                        <Text>外部放入进度条中间的内容</Text>
+                    </View>
+                </CircleProgressView>
+
+                <AnimatedCircleProgress progress={this.state.progress}>
+                    <View style={{backgroundColor: '#987123', flex: 1,  alignItems: 'center',justifyContent:'center'}}>
+
+                        <AMAText value={this.state.progress}/>
+
+                    </View>
+                </AnimatedCircleProgress>
+
+````
+
 ![一个无动画 一个有动画](http://upload-images.jianshu.io/upload_images/831873-863e08fd81b5e4ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 - 复杂配置
 ![很多的配置](http://upload-images.jianshu.io/upload_images/831873-db6733ad4bd156ac.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
