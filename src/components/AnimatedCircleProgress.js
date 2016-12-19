@@ -54,7 +54,9 @@ export default class AnimatedCircleProgress extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.progress != this.props.progress) {
+        console.log(Tag,'componentWillReceiveProps');
+        if (nextProps.progress != this.props.progress
+            || this.props.totalNum!=nextProps.totalNum) {
             this.startAnimate(nextProps.progress);
         }
     }
@@ -66,7 +68,7 @@ export default class AnimatedCircleProgress extends Component {
     }
 
     startAnimate(progress) {
-
+        console.log(Tag,'startAnimate');
         this.state.progress1.setValue(0);
         Animated.timing(this.state.progress1, {
             toValue: progress,
@@ -75,14 +77,6 @@ export default class AnimatedCircleProgress extends Component {
 
     }
 
-    shouldComponentUpdate(nextProps,nexStatus) {
-
-        if(nextProps.progress==this.props.progress ){
-            return false;
-        }
-
-        return true;
-    }
     render() {
 
         const {durtime, progress, ...other} = this.props;

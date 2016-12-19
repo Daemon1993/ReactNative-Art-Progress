@@ -122,7 +122,6 @@ export  default  class CircleProgressView extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        //log(Tag, 'componentWillReceiveProps ' + nextProps.progress);
         if (nextProps != this.props) {
             this.changeProgress(nextProps.progress, nextProps.totalNum);
         }
@@ -130,7 +129,8 @@ export  default  class CircleProgressView extends Component {
 
     shouldComponentUpdate(nextProps, nexStatus) {
         // console.log('CP shouldComponentUpdate ');
-        if (nexStatus.target0 != this.state.target0 || nexStatus.target1 != this.state.target1) {
+        if (nexStatus.target0 != this.state.target0
+            || nexStatus.target1 != this.state.target1) {
             return true;
         }
         // console.log(' false');
