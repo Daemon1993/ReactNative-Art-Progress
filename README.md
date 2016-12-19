@@ -5,6 +5,7 @@ CircleProgress  base  on ReactNative ART
 
 - 一个是根据角度计算终点坐标 sin cos
 - 一个是push方法 用圆弧 将两个点连起来
+- 传入一个radius 我回根据半径计算这个圆的顶点坐标 默认中心最上的点为起始点
 
 > 效果图
 >>![效果图](http://upload-images.jianshu.io/upload_images/831873-35605fb34b5078d3.gif?imageMogr2/auto-orient/strip)
