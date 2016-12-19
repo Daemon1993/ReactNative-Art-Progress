@@ -107,6 +107,14 @@ export  default  class CircleProgressView extends Component {
             target1 = calTargetXY1(degress, this.state.startX1, this.state.startY1, this.state.originR);
             //log(Tag, "target1 " + target1);
         }
+
+        if(target==null){
+            return;
+        }
+        if(degress>180&& target1==null){
+            return;
+        }
+
         //console.log(Tag, "target " + target);
         // 初始状态
         this.setState({
@@ -136,7 +144,6 @@ export  default  class CircleProgressView extends Component {
         // console.log(' false');
         return false;
     }
-
 
     /**
      * 底部基准的两个圆弧
@@ -270,6 +277,7 @@ function calTargetXY(progress, total, startX, startY, radius) {
         target.push(endy);
         return target;
     }
+    return null;
 }
 
 /**
