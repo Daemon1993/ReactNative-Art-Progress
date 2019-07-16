@@ -62,6 +62,7 @@ export  default  class CircleProgressView extends Component {
         let marginLeft = size / 2 - centerW / 2;
 
         console.log("marginLeft " + marginLeft);
+        /*
         this.state = {
             size: size,
             startX: size / 2,
@@ -74,6 +75,27 @@ export  default  class CircleProgressView extends Component {
             startY1: size - this.props.progressWidth,
             endX1: size / 2,
             endY1: size - this.props.progressWidth,
+            centerW: centerW,
+            marginTop: marginTop,
+            marginLeft: marginLeft,
+            target0: null,
+            target1: null,
+        };
+        */
+        // [GJS]--修正：以最宽的那条环的中间位置到圆心的距离为真实的半径
+        let rWidth = Math.max(this.props.progressWidth, this.props.baseProgressWidth) / 2;
+        this.state = {
+            size: size,
+            startX: size / 2,
+            startY: rWidth,
+            //这才是真实半径
+            originR: size / 2 - rWidth,
+            endX: size / 2,
+            endY: rWidth,
+            startX1: size / 2,
+            startY1: size - rWidth,
+            endX1: size / 2,
+            endY1: size - rWidth,
             centerW: centerW,
             marginTop: marginTop,
             marginLeft: marginLeft,
@@ -153,13 +175,21 @@ export  default  class CircleProgressView extends Component {
     getBase(flag) {
         if (flag == 0) {
             let pushStr = "M{0},{1} A{2},{3} 0 {4},{5} {6},{7}";
-            let result = pushStr.format(this.state.startX, this.state.startY, this.state.originR, this.state.originR,
-                0, 1, this.state.startX1, this.state.startY1);
+            let result = pushStr.format(
+                this.state.startX, this.state.startY,
+                this.state.originR, this.state.originR,
+                0, 1,
+                this.state.startX1, this.state.startY1
+            );
             return new Path().push(result);
         } else {
             let pushStr = "M{0},{1} A{2},{3} 0 {4},{5} {6},{7}";
-            let result = pushStr.format(this.state.startX1, this.state.startY1, this.state.originR, this.state.originR,
-                0, 1, this.state.startX, this.state.startY);
+            let result = pushStr.format(
+                this.state.startX1, this.state.startY1,
+                this.state.originR, this.state.originR,
+                0, 1,
+                this.state.startX, this.state.startY
+            );
             return new Path().push(result);
         }
     }

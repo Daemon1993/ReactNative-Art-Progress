@@ -54,12 +54,9 @@ export default class AMAText extends Component {
 
 
     render() {
-
         return (
-
-        <ATextCP
-                 value={this.state.value}/>
-    )
-        ;
+            <ATextCP
+                value={this.state.value}/>
+        );
     }
 }
